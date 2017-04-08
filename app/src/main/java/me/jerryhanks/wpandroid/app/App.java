@@ -13,6 +13,6 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        WPAndroid.init("http://demo.wp-api.org/");
+        WPAndroid.init("http://jerryhanks.me/");
     }
 }

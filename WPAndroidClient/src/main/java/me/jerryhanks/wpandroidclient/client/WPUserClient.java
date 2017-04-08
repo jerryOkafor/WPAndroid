@@ -1,4 +1,4 @@
-package me.jerryhanks.wpandroidclient.interactor;
+package me.jerryhanks.wpandroidclient.client;
 
 import android.support.annotation.NonNull;
 
@@ -16,9 +16,9 @@ import retrofit2.Response;
  * Created by @Po10cio on 29/03/2017 for WPAndroid.
  */
 
-public class UserInteractor {
+public class WPUserClient {
 
-    private static UserService mService = ServiceGenerator.craeteService(UserService.class);
+    private static UserService mService = ServiceGenerator.createService(UserService.class);
 
     public static void getUsers(@NonNull final UserCallback.OnUsersList callback) {
         mService.listUsers()

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="me.jerryhanks.wpandroid.PostsFragment"
+        tools:showIn="@layout/activity_main">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/posts_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            
+
+        </android.support.v7.widget.RecyclerView>
+
+        <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
+
+
+    </RelativeLayout>
+
+</layout>

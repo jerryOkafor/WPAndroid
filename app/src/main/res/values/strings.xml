@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">WPAndroid</string>
     <string name="action_settings">Settings</string>
+    <string name="posts">Posts</string>
+    <string name="pages">Pages</string>
+    <string name="users">Users</string>
+    <string name="action_drawe_open">Drawer Open</string>
+    <string name="action_drawe_close">Drawer Close</string>
+    <string name="action_media">Media</string>
+    <string name="comments">Comments</string>
 </resources>

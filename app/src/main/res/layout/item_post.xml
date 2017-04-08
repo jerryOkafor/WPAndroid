@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dim_8dp"
+        android:layout_marginTop="@dimen/dim_8dp"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="90dp"
+            android:layout_weight="1.5"
+            android:id="@+id/featured_image"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/wp_logo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:orientation="vertical"
+            android:padding="@dimen/dim_8dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:id="@+id/post_title"
+                android:text="Donald Trump Eventful Martin Luther Kings Day one two three fout ssbdsbkdbksbdbs"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:id="@+id/post_author"
+                android:text="Jerry Hanks Okafor"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:id="@+id/post_date"
+                android:text="12 April 17 . 12 Likes"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textSize="12sp"
+                android:textStyle="italic"
+                android:typeface="sans" />
+
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:ellipsize="end"-->
+                <!--android:id="@+id/post_excerpt"-->
+                <!--android:fontFamily="sans-serif-condensed"-->
+                <!--android:maxLines="4"-->
+                <!--android:text="This is a little Excerpt of the post and we dont sjdsd nksfknk sbdksbfkbd bfkdbkfbkdbfk jbdksdbksb fkbdbfk dbkfbdkb fkbdk;sjnsfdn fkndns;dmsm"-->
+                <!--android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"-->
+                <!--android:typeface="sans" />-->
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>
