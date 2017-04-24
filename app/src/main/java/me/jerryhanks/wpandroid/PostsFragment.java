@@ -31,11 +31,13 @@ import java.util.List;
 import me.jerryhanks.wpandroid.adapter.RecyclerAdapter;
 import me.jerryhanks.wpandroid.data.model.PostHolder;
 import me.jerryhanks.wpandroid.databinding.PostFragmentBinding;
+import me.jerryhanks.wpandroidclient.client.WPMediaClient;
 import me.jerryhanks.wpandroidclient.client.WPPostClient;
+import me.jerryhanks.wpandroidclient.data.interfaces.MediaCallback;
 import me.jerryhanks.wpandroidclient.data.interfaces.PostCallback;
+import me.jerryhanks.wpandroidclient.data.model.Media;
 import me.jerryhanks.wpandroidclient.data.model.Post;
 import me.jerryhanks.wpandroidclient.data.model.WpErrorResponse;
-import me.jerryhanks.wpandroidclient.util.WPAndroidUtil;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -56,13 +58,24 @@ public class PostsFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.post_fragment, container, false);
+
+        View rootView = mBinding.getRoot();
+
         CustomTabsServiceConnection connection = new CustomTabsServiceConnection() {
             @Override
             public void onCustomTabsServiceConnected(ComponentName name, CustomTabsClient client) {
                 mCustomTabsClient = client;
                 mCustomTabsClient.warmup(1000);
 
-              session = mCustomTabsClient.newSession(new CustomTabsCallback(){
+                session = mCustomTabsClient.newSession(new CustomTabsCallback() {
                 });
             }
 
@@ -73,15 +86,6 @@ public class PostsFragment extends Fragment {
         };
 
         CustomTabsClient.bindCustomTabsService(getContext(), CUSTOM_TAB_PACKAGE_NAME, connection);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.post_fragment, container, false);
-
-        View rootView = mBinding.getRoot();
 
         RecyclerView recyclerView = mBinding.postsRecyclerView;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
@@ -89,14 +93,31 @@ public class PostsFragment extends Fragment {
 
         final RecyclerAdapter<Post, PostHolder> mAdapter = new RecyclerAdapter<Post, PostHolder>(Post.class, R.layout.item_post, PostHolder.class) {
             @Override
-            protected void populateViewHolder(PostHolder holder, final Post model, int position) {
+            protected void populateViewHolder(final PostHolder holder, final Post model, int position) {
                 //Do  nothing for now.
 
-                String url = WPAndroidUtil.buidlMedisUrl(model.getFeaturedMedia());
-                Log.d(TAG,url);
-                Glide.with(getActivity())
-                        .load("http://www.jerryhanks.me/wp-content/uploads/2017/03/smart-input-featured-295x300.png")
-                        .into(holder.getBinding().featuredImage);
+                WPMediaClient.getMedia(model.getFeaturedMedia(), new MediaCallback.OnMediaCallback() {
+                    @Override
+                    public void onMedia(@NonNull Media media) {
+                        Glide.with(getActivity())
+                                .load(media.getSourceUrl())
+                                .into(holder.getBinding().featuredImage);
+
+                    }
+
+                    @Override
+                    public void onError(@NonNull WpErrorResponse errorResponse) {
+                        Log.d(TAG, "Error: " + errorResponse);
+
+                    }
+
+                    @Override
+                    public void onFailure(@NonNull Throwable t) {
+                        Log.d(TAG, "Error:" + t.getMessage());
+
+                    }
+                });
+
 
                 holder.getBinding().postTitle.setText(Html.fromHtml(model.getTitle().getRendered()), TextView.BufferType.SPANNABLE);
                 holder.getBinding().postAuthor.setText("Auto Id:" + model.getAuthor());
@@ -154,7 +175,10 @@ public class PostsFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+    }
 
-
+    @Override
+    public void onStop() {
+        super.onStop();
     }
 }

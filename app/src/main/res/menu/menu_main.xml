@@ -17,10 +17,12 @@
 
         <item
             android:id="@+id/action_media"
+            android:icon="@drawable/ic_perm_media"
             android:title="@string/action_media" />
 
         <item
             android:id="@+id/action_comments"
+            android:icon="@drawable/ic_comment"
             android:title="@string/comments" />
     </group>
 </menu>
