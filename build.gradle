@@ -9,6 +9,7 @@ buildscript {
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+        classpath 'com.google.gms:google-services:3.0.0'
     }
 }
 
@@ -25,14 +26,43 @@ task clean(type: Delete) {
 ext {
     //support version
     supportVersion = '25.3.1'
+
     //guava Version
     guavaVersion = '20.0'
+
     //retrofit
     retrofitVersion = '2.2.0'
+
     //gsonVersion
     gsonVersion = "2.6.1"
+
     //interceptor version
     inteceptorVersion = "3.6.0"
+
     //glide version
     glideVersion = "3.7.0"
+
+    //Firebase UI Version
+    firebaseUIVersion = '1.2.0'
+
+    //Firebase Version
+    firebaseVersion = '10.2.0'
+
+    //Toasty
+    toastyVersion = '1.1.2'
+
+    //guava
+    guavaVersion = '20.0'
+
+    //timber
+    timberVersion = '4.3.1'
+
+    //rxJava
+    rxJavaVersion = '2.0.9'
+
+    //rxAndroid
+    rxAndroidVersion = '2.0.1'
+
+    //rxBinding
+    rxBindingVersion = '2.0.0'
 }

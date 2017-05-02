@@ -1,28 +1,35 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="me.jerryhanks.wpandroid.MainActivity">
+    tools:context=".home.MainActivity">
     <group android:id="@+id/m1">
         <item
-            android:id="@+id/action_posts"
+            android:id="@+id/action_parking"
             android:icon="@drawable/ic_forum"
-            android:title="@string/posts" />
+            android:title="@string/action_parking" />
+        <item
+            android:id="@+id/action_history"
+            android:icon="@drawable/ic_forum"
+            android:title="@string/action_history" />
+    </group>
+    <group android:id="@+id/m2">
         <item
             android:id="@+id/action_pages"
             android:icon="@drawable/ic_pages"
-            android:title="@string/pages" />
+            android:title="@string/action_account" />
         <item
             android:id="@+id/action_users"
             android:icon="@drawable/ic_person_pin"
-            android:title="@string/users" />
+            android:title="@string/action_help" />
 
+    </group>
+    <group android:id="@+id/m3">
         <item
-            android:id="@+id/action_media"
-            android:icon="@drawable/ic_perm_media"
-            android:title="@string/action_media" />
-
+            android:id="@+id/action_setting"
+            android:icon="@drawable/ic_check_white_48dp"
+            android:title="@string/action_settings" />
         <item
-            android:id="@+id/action_comments"
-            android:icon="@drawable/ic_comment"
-            android:title="@string/comments" />
+            android:id="@+id/action_logout"
+            android:icon="@drawable/ic_exit_to_app"
+            android:title="@string/logout" />
     </group>
 </menu>

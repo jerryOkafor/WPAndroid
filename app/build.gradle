@@ -1,11 +1,20 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
 apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "me.jerryhanks.wpandroid"
-        minSdkVersion 15
+        applicationId "me.jerryhanks.parkgidi"
+        minSdkVersion 16
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -16,11 +25,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-
         debug {
             debuggable = true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            applicationIdSuffix '.dev'
         }
     }
 
@@ -29,21 +38,54 @@ android {
     }
 }
 
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+    maven { url "https://jitpack.io" }
+    mavenCentral()
+    jcenter()
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':WPAndroidClient')
-
-
     compile "com.android.support:appcompat-v7:$rootProject.supportVersion"
+    compile "com.android.support:cardview-v7:$rootProject.supportVersion"
+    compile "com.android.support:customtabs:$rootProject.supportVersion"
     compile "com.android.support:recyclerview-v7:$rootProject.supportVersion"
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta5'
     compile "com.android.support:design:$rootProject.supportVersion"
     compile "com.android.support:customtabs:$rootProject.supportVersion"
+    compile "com.android.support:support-v4:$rootProject.supportVersion"
+
+    //Firebase
+    compile "com.google.firebase:firebase-auth:$rootProject.firebaseVersion"
+    compile "com.google.firebase:firebase-invites:$rootProject.firebaseVersion"
+    compile "com.google.firebase:firebase-ads:$rootProject.firebaseVersion"
+    compile "com.google.firebase:firebase-messaging:$rootProject.firebaseVersion"
+    compile "com.google.firebase:firebase-crash:$rootProject.firebaseVersion"
+    //Firebase UI
+    compile "com.firebaseui:firebase-ui-auth:$rootProject.firebaseUIVersion"
+    //    compile "com.firebaseui:firebase-ui-database:$rootProject.firebaseVersion"
+
+    compile "com.google.guava:guava:$rootProject.guavaVersion"
+    compile "com.jakewharton.timber:timber:$rootProject.timberVersion"
+    compile "com.github.GrenderG:Toasty:$rootProject.toastyVersion"
+
+    //rxJava
+    compile "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
+    compile "io.reactivex.rxjava2:rxjava:$rootProject.rxJavaVersion"
+
+    compile "com.jakewharton.rxbinding2:rxbinding:$rootProject.rxBindingVersion"
+    compile "com.jakewharton.rxbinding2:rxbinding-support-v4:$rootProject.rxBindingVersion"
+    compile "com.jakewharton.rxbinding2:rxbinding-appcompat-v7:$rootProject.rxBindingVersion"
+    compile "com.jakewharton.rxbinding2:rxbinding-design:$rootProject.rxBindingVersion"
+    compile "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:$rootProject.rxBindingVersion"
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta5'
+    compile 'com.google.android.gms:play-services-maps:10.2.0'
+    compile 'com.google.android.gms:play-services-places:10.2.0'
     testCompile 'junit:junit:4.12'
-
 }
+
+apply plugin: 'com.google.gms.google-services'

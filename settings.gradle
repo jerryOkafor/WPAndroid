@@ -1,1 +1,1 @@
-include ':app', ':WPAndroidClient'
+include ':app'
