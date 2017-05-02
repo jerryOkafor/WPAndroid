@@ -65,4 +65,10 @@ ext {
 
     //rxBinding
     rxBindingVersion = '2.0.0'
+
+    //geoFire
+    geoFireVersion = '2.1.1'
+
+    //Material Dialog Version
+    materialDialogVersion = '0.9.4.4'
 }

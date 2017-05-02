@@ -57,6 +57,7 @@ dependencies {
 
     //Firebase
     compile "com.google.firebase:firebase-auth:$rootProject.firebaseVersion"
+    compile "com.google.firebase:firebase-database:$rootProject.firebaseVersion"
     compile "com.google.firebase:firebase-invites:$rootProject.firebaseVersion"
     compile "com.google.firebase:firebase-ads:$rootProject.firebaseVersion"
     compile "com.google.firebase:firebase-messaging:$rootProject.firebaseVersion"
@@ -65,9 +66,16 @@ dependencies {
     compile "com.firebaseui:firebase-ui-auth:$rootProject.firebaseUIVersion"
     //    compile "com.firebaseui:firebase-ui-database:$rootProject.firebaseVersion"
 
+    //geo Fire
+    compile "com.firebase:geofire-android:$rootProject.geoFireVersion"
+
+
     compile "com.google.guava:guava:$rootProject.guavaVersion"
     compile "com.jakewharton.timber:timber:$rootProject.timberVersion"
     compile "com.github.GrenderG:Toasty:$rootProject.toastyVersion"
+
+    //Maetrila Dilog
+    compile "com.afollestad.material-dialogs:core:$rootProject.materialDialogVersion"
 
     //rxJava
     compile "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
@@ -84,6 +92,7 @@ dependencies {
     })
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta5'
     compile 'com.google.android.gms:play-services-maps:10.2.0'
+    compile 'com.google.android.gms:play-services-location:10.2.0'
     compile 'com.google.android.gms:play-services-places:10.2.0'
     testCompile 'junit:junit:4.12'
 }

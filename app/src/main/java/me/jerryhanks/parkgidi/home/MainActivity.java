@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onClick(View view) {
         int id = view.getId();
         if (id == R.id.btn_request_parking) {
-            startActivity(MapsActivity.creatIntent(this));
+            startActivity(MapsActivity.createIntent(this));
 
         }
     }
