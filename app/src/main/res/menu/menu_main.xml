@@ -4,28 +4,28 @@
     <group android:id="@+id/m1">
         <item
             android:id="@+id/action_parking"
-            android:icon="@drawable/ic_forum"
+            android:icon="@drawable/ic_local_parking"
             android:title="@string/action_parking" />
         <item
             android:id="@+id/action_history"
-            android:icon="@drawable/ic_forum"
+            android:icon="@drawable/ic_history"
             android:title="@string/action_history" />
     </group>
     <group android:id="@+id/m2">
         <item
-            android:id="@+id/action_pages"
-            android:icon="@drawable/ic_pages"
+            android:id="@+id/action_account"
+            android:icon="@drawable/ic_account_box"
             android:title="@string/action_account" />
         <item
-            android:id="@+id/action_users"
-            android:icon="@drawable/ic_person_pin"
+            android:id="@+id/action_help"
+            android:icon="@drawable/ic_help"
             android:title="@string/action_help" />
 
     </group>
     <group android:id="@+id/m3">
         <item
             android:id="@+id/action_setting"
-            android:icon="@drawable/ic_check_white_48dp"
+            android:icon="@drawable/ic_help"
             android:title="@string/action_settings" />
         <item
             android:id="@+id/action_logout"

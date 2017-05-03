@@ -1,0 +1,262 @@
+<layout>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:custom="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dp_16"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="me.jerryhanks.parkgidi.home.FragmentAccount">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <me.jerryhanks.parkgidi.view.ProgressCircularImageView
+                android:id="@+id/profile_pic"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                custom:imageSource="@string/default_test_avatar">
+
+            </me.jerryhanks.parkgidi.view.ProgressCircularImageView>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/dp_16"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_toEndOf="@+id/profile_pic"
+                android:layout_toRightOf="@+id/profile_pic"
+                android:text="@string/default_testing_name"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/textView2"
+                android:layout_marginLeft="@dimen/dp_16"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_toRightOf="@+id/profile_pic"
+                android:maxLines="2"
+                android:text="My Default Address which shall span only two lines.."
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+            <View
+                android:id="@+id/line_divider"
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_below="@id/profile_pic"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@android:color/darker_gray" />
+
+
+            <LinearLayout
+                android:id="@+id/credit_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line_divider"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/dim_16dp"
+                android:paddingTop="@dimen/dim_8dp"
+                android:weightSum="3">
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:gravity="start|center_vertical"
+                    android:padding="5dp"
+                    android:text="@string/format_credit"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+                <Button
+                    android:id="@+id/top_up_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/top_up"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorAccent" />
+
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/line_divider_1"
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_below="@id/credit_linear_layout"
+                android:background="@android:color/darker_gray" />
+
+            <LinearLayout
+                android:id="@+id/payment_method_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line_divider_1"
+                android:background="@android:drawable/list_selector_background"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/dp_16"
+                android:paddingTop="@dimen/dp_16"
+                android:weightSum="4">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:tint="@color/colorPrimaryDark"
+                    app:srcCompat="@drawable/ic_payment" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:padding="8dp"
+                    android:text="Payment Methods"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/line_divider_2"
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_below="@id/payment_method_layout"
+                android:layout_marginLeft="75dp"
+                android:background="@android:color/darker_gray" />
+
+            <LinearLayout
+                android:id="@+id/add_a_car_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line_divider_2"
+                android:background="@android:drawable/list_selector_background"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/dp_16"
+                android:paddingTop="@dimen/dp_16"
+                android:weightSum="4">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:tint="@color/colorPrimaryDark"
+                    app:srcCompat="@drawable/ic_add_box" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:padding="8dp"
+                    android:text="Add a new Car     "
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/line_divider_5"
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_below="@id/add_a_car_layout"
+                android:layout_marginLeft="75dp"
+                android:background="@android:color/darker_gray" />
+
+            <LinearLayout
+                android:id="@+id/add_a_space_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line_divider_5"
+                android:background="@android:drawable/list_selector_background"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/dp_16"
+                android:paddingTop="@dimen/dp_16"
+                android:weightSum="4">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:tint="@color/colorPrimaryDark"
+                    app:srcCompat="@drawable/ic_add_circle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:padding="8dp"
+                    android:text="Add a new Space    "
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/line_divider_3"
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_below="@id/add_a_space_layout"
+                android:layout_marginLeft="75dp"
+                android:background="@android:color/darker_gray" />
+
+            <LinearLayout
+                android:id="@+id/delete_account_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line_divider_3"
+                android:background="@android:drawable/list_selector_background"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/dp_16"
+                android:paddingTop="@dimen/dp_16"
+                android:weightSum="4">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:tint="@android:color/holo_red_light"
+                    app:srcCompat="@drawable/ic_delete" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:padding="8dp"
+                    android:text="Delete my Account"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textColor="@android:color/holo_red_light" />
+
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/line_divider_4"
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_below="@id/delete_account_layout"
+                android:layout_marginLeft="75dp"
+                android:background="@android:color/darker_gray" />
+
+        </RelativeLayout>
+
+
+    </FrameLayout>
+</layout>

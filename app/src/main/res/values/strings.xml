@@ -27,4 +27,14 @@
     <string name="title_parking_request">Confirm request</string>
     <string name="view_details">Details</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="default_test_avatar"><![CDATA[https://firebasestorage.googleapis.com/v0/b/parkgidi–f7b9f.appspot.com/o/avatar%2Fphoto.jpg?alt=media&token=36bcfcc9–27b5-4188-9e09-069792fcf35>]]></string>
+    <string name="default_testing_name">Okafor Jerry Hanks</string>
+    <string name="top_up">Top Up</string>
+    <string name="format_credit">Credit: $20</string>
+    <string name="agree_to_terms_of_service">I agree to terms of service</string>
+    <string name="add_car_title">Add a Car</string>
+    <string name="ok">Ok</string>
+
 </resources>

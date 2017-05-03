@@ -21,20 +21,17 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        <!--<meta-data-->
-        <!--android:name="com.google.android.geo.API_KEY"-->
-        <!--android:value="AIzaSyBtuayGNxOKO9HnAhzY5nv4FfxSqFvkMpI" />-->
+        <!-- <meta-data -->
+        <!-- android:name="com.google.android.geo.API_KEY" -->
+        <!-- android:value="AIzaSyBtuayGNxOKO9HnAhzY5nv4FfxSqFvkMpI" /> -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyA-GyhGhLAPxxg2T7a1z72rff5oDNfVDHo" />
 
-
         <activity
             android:name=".home.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".auth.AuthActivity"
             android:theme="@style/AuthTheme">
@@ -46,9 +43,8 @@
         </activity>
         <activity
             android:name=".map.MapsActivity"
-            android:theme="@style/AppTheme.NoActionBar.Map">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar.Map"></activity>
+        <activity android:name=".account.AccountActivity"></activity>
     </application>
 
 </manifest>

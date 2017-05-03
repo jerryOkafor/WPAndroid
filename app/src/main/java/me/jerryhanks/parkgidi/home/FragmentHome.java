@@ -16,9 +16,9 @@ import me.jerryhanks.parkgidi.databinding.PostFragmentBinding;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class HomeFragment extends Fragment {
+public class FragmentHome extends Fragment {
 
-    private static final String TAG = HomeFragment.class.getSimpleName();
+    private static final String TAG = FragmentHome.class.getSimpleName();
 
     public static final String CUSTOM_TAB_PACKAGE_NAME = "com.android.chrome";  // Change when in stable
 
@@ -26,7 +26,7 @@ public class HomeFragment extends Fragment {
     private CustomTabsClient mCustomTabsClient;
     private CustomTabsSession session;
 
-    public HomeFragment() {
+    public FragmentHome() {
     }
 
     @Override

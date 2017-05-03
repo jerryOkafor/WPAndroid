@@ -71,4 +71,7 @@ ext {
 
     //Material Dialog Version
     materialDialogVersion = '0.9.4.4'
+
+    //CircleImageView
+    circleImageVersion = "2.1.0"
 }

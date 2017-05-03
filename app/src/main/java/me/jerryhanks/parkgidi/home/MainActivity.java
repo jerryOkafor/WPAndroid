@@ -35,14 +35,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private static final int REQUEST_PLACE_PICKER = 123;
     private FloatingActionButton requestParkingBtn;
+    private ActionBarDrawerToggle drawerToggle;
+    private ActivityMainBinding mainBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityMainBinding mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         setSupportActionBar(mainBinding.toolbar);
 
-        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(
+        drawerToggle = new ActionBarDrawerToggle(
                 this,
                 mainBinding.drawer,
                 mainBinding.toolbar,
@@ -56,20 +58,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         requestParkingBtn = mainBinding.btnRequestParking;
         requestParkingBtn.setOnClickListener(this);
 
+
         //attach the posts frg
-        ParkGidiUtil.attachFragment(this, new HomeFragment());
+        ParkGidiUtil.attachFragment(this, new FragmentHome());
 
 
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        mainBinding.drawer.closeDrawers();
         int id = item.getItemId();
         if (id == R.id.action_parking) {
+            return true;
+        } else if (id == R.id.action_account) {
 
-        } else if (id == R.id.action_pages) {
+            ParkGidiUtil.attachFragment(this, FragmentAccount.newInstance("", ""));
+            return true;
 
-        } else if (id == R.id.action_users) {
+        } else if (id == R.id.action_help) {
+            return true;
 
         } else if (id == R.id.action_logout) {
             AuthUI.getInstance()
@@ -81,10 +89,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             finish();
                         }
                     });
+            return true;
         }
 
 
-        return false;
+        return true;
+
     }
 
     public static Intent createIntent(AuthActivity activity) {
