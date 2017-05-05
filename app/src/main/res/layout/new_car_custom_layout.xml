@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_16">
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/car_model_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/model"
+        app:errorTextAppearance="@style/AppTheme.Text.ErrorText"
+        app:hintTextAppearance="@style/AppTheme.Text.HintText">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/car_model_ed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="1" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/car_number_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/number_plate"
+        app:errorTextAppearance="@style/AppTheme.Text.ErrorText"
+        app:hintTextAppearance="@style/AppTheme.Text.HintText">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/car_number_plate_ed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="1" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <CheckBox
+        android:id="@+id/new_car_tofs_check_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:text="@string/i_agree_to_terms_of_service"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+         />
+
+</LinearLayout>

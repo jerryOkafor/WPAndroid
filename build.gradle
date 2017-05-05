@@ -24,6 +24,15 @@ task clean(type: Delete) {
 }
 
 ext {
+    //build Tool version
+    buildToolsVersion = "25.0.3"
+
+    //compiled sdk Version
+    compileSdkVersion = 25
+
+    //target sdk Version
+    targetSdkVersion = 25
+
     //support version
     supportVersion = '25.3.1'
 
@@ -46,7 +55,7 @@ ext {
     firebaseUIVersion = '1.2.0'
 
     //Firebase Version
-    firebaseVersion = '10.2.0'
+    firebaseVersion = '10.2.4'
 
     //Toasty
     toastyVersion = '1.1.2'
@@ -55,7 +64,7 @@ ext {
     guavaVersion = '20.0'
 
     //timber
-    timberVersion = '4.3.1'
+    timberVersion = '4.5.1'
 
     //rxJava
     rxJavaVersion = '2.0.9'
@@ -74,4 +83,7 @@ ext {
 
     //CircleImageView
     circleImageVersion = "2.1.0"
+
+    //playServices Version
+    playServicesVersion = '10.2.4'
 }

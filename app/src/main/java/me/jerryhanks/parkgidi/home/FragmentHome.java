@@ -3,8 +3,6 @@ package me.jerryhanks.parkgidi.home;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.customtabs.CustomTabsClient;
-import android.support.customtabs.CustomTabsSession;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,11 +18,7 @@ public class FragmentHome extends Fragment {
 
     private static final String TAG = FragmentHome.class.getSimpleName();
 
-    public static final String CUSTOM_TAB_PACKAGE_NAME = "com.android.chrome";  // Change when in stable
-
     private PostFragmentBinding mBinding;
-    private CustomTabsClient mCustomTabsClient;
-    private CustomTabsSession session;
 
     public FragmentHome() {
     }

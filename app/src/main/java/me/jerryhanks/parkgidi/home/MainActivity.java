@@ -1,9 +1,9 @@
 package me.jerryhanks.parkgidi.home;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -11,15 +11,9 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.GooglePlayServicesRepairableException;
-import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
@@ -28,15 +22,18 @@ import me.jerryhanks.parkgidi.auth.AuthActivity;
 import me.jerryhanks.parkgidi.databinding.ActivityMainBinding;
 import me.jerryhanks.parkgidi.map.MapsActivity;
 import me.jerryhanks.parkgidi.util.ParkGidiUtil;
-import timber.log.Timber;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
-    private static final int REQUEST_PLACE_PICKER = 123;
+    private static final String FRAGTAG = "place_picker_frag";
+    private static final String ACCOUNT_FRAG_TAG = "account_frg_tag";
+    private static final String NAV_ITEM_POSITION = "com.jerryhanks.me.navitemposition";
+    private static final String HOME_FRAG_TAG = "home_frag_tag";
     private FloatingActionButton requestParkingBtn;
     private ActionBarDrawerToggle drawerToggle;
     private ActivityMainBinding mainBinding;
+    private int mNavItemPosition = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +55,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         requestParkingBtn = mainBinding.btnRequestParking;
         requestParkingBtn.setOnClickListener(this);
 
-
-        //attach the posts frg
-        ParkGidiUtil.attachFragment(this, new FragmentHome());
+        ParkGidiUtil.showFragment(this, new FragmentHome(), HOME_FRAG_TAG);
 
 
     }
@@ -70,15 +65,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mainBinding.drawer.closeDrawers();
         int id = item.getItemId();
         if (id == R.id.action_parking) {
+            mNavItemPosition = 0;
             return true;
+        } else if (id == R.id.action_history) {
+            mNavItemPosition = 1;
         } else if (id == R.id.action_account) {
-
-            ParkGidiUtil.attachFragment(this, FragmentAccount.newInstance("", ""));
+            mNavItemPosition = 2;
+            ParkGidiUtil.showFragment(this, FragmentAccount.newInstance("", ""), ACCOUNT_FRAG_TAG);
             return true;
-
         } else if (id == R.id.action_help) {
+            mNavItemPosition = 3;
             return true;
-
+        } else if (id == R.id.action_setting) {
+            mNavItemPosition = 3;
         } else if (id == R.id.action_logout) {
             AuthUI.getInstance()
                     .signOut(this)
@@ -110,31 +109,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = view.getId();
         if (id == R.id.btn_request_parking) {
             startActivity(MapsActivity.createIntent(this));
-
-        }
-    }
-
-    private void launchPlacePicker() {
-        try {
-            PlacePicker.IntentBuilder intentBuilder = new PlacePicker.IntentBuilder();
-            Intent intent = intentBuilder.build(this);
-            // Start the Intent by requesting a result, identified by a request code.
-            startActivityForResult(intent, REQUEST_PLACE_PICKER);
-
-            //disable fabb btn
             toggleRequestButton(false);
 
-
-        } catch (GooglePlayServicesRepairableException e) {
-            GooglePlayServicesUtil
-                    .getErrorDialog(e.getConnectionStatusCode(), this, 0);
-        } catch (GooglePlayServicesNotAvailableException e) {
-            Toast.makeText(this, "Google Play Services is not available.",
-                    Toast.LENGTH_LONG)
-                    .show();
         }
-
     }
+
 
     private void toggleRequestButton(boolean b) {
         requestParkingBtn.setEnabled(b);
@@ -142,44 +121,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_PLACE_PICKER) {
-            // This result is from the PlacePicker dialog.
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 
-            // Enable the Fab request button
-            toggleRequestButton(true);
-
-            if (resultCode == Activity.RESULT_OK) {
-                /* User has picked a place, extract data.
-                   Data is extracted from the returned intent by retrieving a Place object from
-                   the PlacePicker.
-                 */
-                final Place place = PlacePicker.getPlace(this, data);
-
-                /* A Place object contains details about that place, such as its name, address
-                and phone number. Extract the name, address, phone number, place ID and place types.
-                 */
-                final CharSequence name = place.getName();
-                final CharSequence address = place.getAddress();
-                final CharSequence phone = place.getPhoneNumber();
-                final String placeId = place.getId();
-                String attribution = PlacePicker.getAttributions(data);
-
-                if (attribution == null) {
-                    attribution = "";
-                }
-
-                // Print data to debug log
-                Timber.d("Place selected: " + placeId + " (" + name.toString() + ")");
-
-
-            } else {
-                // User has not selected a place, hide the card.
-
-            }
-
-        } else {
-            super.onActivityResult(requestCode, resultCode, data);
-        }
-
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        outState.putInt(NAV_ITEM_POSITION, mNavItemPosition);
+        super.onSaveInstanceState(outState, outPersistentState);
     }
 }

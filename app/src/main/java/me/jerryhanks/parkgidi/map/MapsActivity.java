@@ -45,6 +45,7 @@ import com.google.firebase.database.DatabaseReference;
 import java.util.HashMap;
 
 import me.jerryhanks.parkgidi.R;
+import me.jerryhanks.parkgidi.util.GeoFireSource;
 import me.jerryhanks.parkgidi.util.ParkGidiUtil;
 import timber.log.Timber;
 
@@ -105,8 +106,7 @@ public class MapsActivity extends AppCompatActivity implements
         mGoogleApiClient.connect();
 
         //Build the GeoFire Connections here
-        DatabaseReference ref = ParkGidiUtil.getGeoFireRef();
-        mGeoFire = new GeoFire(ref);
+        mGeoFire = GeoFireSource.getInstance();
 
         //init Geo Query so that Listener does not throw Error onStart()
         mGeoQuery = mGeoFire.queryAtLocation(

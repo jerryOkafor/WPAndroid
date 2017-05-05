@@ -10,12 +10,12 @@ buildscript {
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
         applicationId "me.jerryhanks.parkgidi"
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -74,7 +74,7 @@ dependencies {
     compile "com.jakewharton.timber:timber:$rootProject.timberVersion"
     compile "com.github.GrenderG:Toasty:$rootProject.toastyVersion"
 
-    //Maetrila Dilog
+    //Material Dilog
     compile "com.afollestad.material-dialogs:core:$rootProject.materialDialogVersion"
 
     //rxJava
@@ -91,10 +91,11 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta5'
-    compile 'com.google.android.gms:play-services-maps:10.2.0'
-    compile 'com.google.android.gms:play-services-location:10.2.0'
-    compile 'com.google.android.gms:play-services-places:10.2.0'
-    compile 'com.android.support:support-v4:25.3.1'
+    compile "com.google.android.gms:play-services-auth:$rootProject.playServicesVersion"
+    compile "com.google.android.gms:play-services-auth-base:$rootProject.playServicesVersion"
+    compile "com.google.android.gms:play-services-maps:$rootProject.playServicesVersion"
+    compile "com.google.android.gms:play-services-location:$rootProject.playServicesVersion"
+    compile "com.google.android.gms:play-services-places:$rootProject.playServicesVersion"
     testCompile 'junit:junit:4.12'
 }
 
